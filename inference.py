@@ -4,7 +4,6 @@ sys.path.append('model')
 from typing import Callable, Dict, List, NoReturn, Tuple
 import numpy as np
 import streamlit as st
-from datasets import Dataset, DatasetDict, Features, Value, load_metric
 from transformers import AutoConfig, AutoTokenizer, AutoModelForSequenceClassification
 
 @st.cache(allow_output_mutation=True)
