@@ -29,7 +29,7 @@ with st.form(key='my_form', clear_on_submit=True):
     with col2:
         st.write("&#9660;&#9660;&#9660;")
         submit = st.form_submit_button(label="Ask")
-
+        clear = st.form_submit_button(label='clear')
 if submit:
     msg1 = (st.session_state['st1'], True)
     msg2 = (st.session_state['st2'], True)
@@ -42,6 +42,10 @@ if submit:
     with st.spinner('연산중'):
         result = run(tokenizer, model, msg1[0], msg2[0])
     print(result)
-    msg = (result, False)
+    text = "문장의 유사도는 " + str(result) + "점 입니다."
+    msg = (text, False)
     st.session_state.messages.append(msg)
     message(msg[0], is_user=msg[1], key=random())
+
+if clear:
+    st.session_state.messages = []
